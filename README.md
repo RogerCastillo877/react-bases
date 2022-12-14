@@ -22,3 +22,8 @@ nameApp.defaultProps = {
   subtitle: 'No hay subtitle'
 }
 ```
+
+## To add GrennSock
+```
+yarn add gsap
+```
