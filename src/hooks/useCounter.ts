@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 const MAXIMUN_COUNT = 10;
 
-export const CounterEffect = () => {
+export const useCounter = () => {
 
   const [counter, setCounter] = useState(5);
   const counterElement = useRef<HTMLHeadingElement>(null);
@@ -14,7 +14,7 @@ export const CounterEffect = () => {
 
   useEffect(() => {
     if (counter < MAXIMUN_COUNT) return;
-    console.log('%cSe llego al máximo', 'color: blue; background-color:orange')
+    console.log('%cSe llego al máximo', 'color: blue; background-color:lightgreen')
 
     const tl = gsap.timeline();
 
@@ -23,13 +23,9 @@ export const CounterEffect = () => {
 
   }, [counter])
 
-
-  return (
-    <>
-      <h2>CounterEffect:</h2>
-      <h3 ref={counterElement}>{counter}</h3>
-      <button onClick={handleClick}>+1</button>
-    </>
-  );
-};
-
+  return {
+    counter,
+    counterElement,
+    handleClick
+  }
+}
